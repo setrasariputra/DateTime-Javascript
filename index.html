@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Waktu Saat Ini</title>
+</head>
+<body>
+    <h1 id="timeInfo">Selamat Datang di Halaman Jam Saat Ini</h1>
+
+    <script>
+        function updateTimeInfo() {
+            // Mendapatkan waktu saat ini
+            var currentTime = new Date();
+
+            // Mengambil jam, menit, dan detik dari waktu saat ini
+            var hours = currentTime.getHours();
+            var minutes = currentTime.getMinutes();
+            var seconds = currentTime.getSeconds();
+
+            // Menambahkan nol di depan angka jika kurang dari 10
+            hours = hours < 10 ? "0" + hours : hours;
+            minutes = minutes < 10 ? "0" + minutes : minutes;
+            seconds = seconds < 10 ? "0" + seconds : seconds;
+
+            // Membuat format waktu "HH:MM:SS"
+            //var timeString = hours + ":" + minutes + ":" + seconds;
+            var timeString = hours + ":" + minutes;
+
+            // Menentukan waktu dan mengubah teks h1 berdasarkan jam
+            var timeInfo = document.getElementById("timeInfo");
+
+            if (hours >= 5 && hours < 11) {
+                timeInfo.textContent = "Saat ini Waktu Pagi Hari - " + timeString;
+            } else if (hours >= 11 && hours < 15) {
+                timeInfo.textContent = "Saat ini Waktu Siang Hari - " + timeString;
+            } else if (hours >= 15 && hours < 18) {
+                timeInfo.textContent = "Saat ini Waktu Sore Hari - " + timeString;
+            } else if (hours >= 18 && hours < 23) {
+                timeInfo.textContent = "Saat ini Waktu Malam Hari - " + timeString;
+            } else {
+                timeInfo.textContent = "Saat ini Waktu Dini Hari - " + timeString;
+            }
+        }
+
+        // Memanggil fungsi saat halaman dimuat
+        window.onload = updateTimeInfo;
+    </script>
+</body>
+</html>
